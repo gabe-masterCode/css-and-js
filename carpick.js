@@ -232,11 +232,10 @@ $("#carSelect").change(function(){
 	
 
 $("#zipInput").focusout(function(){
-				 //alert(curZip);
+		
 	  curZip = $("#zipInput").val();
-	  	  //foreach
-	  //if(foundZip){
-	  if(zips[""+ curZip +""]){
+	  
+		if(zips[""+ curZip +""]){
 		  
 		  curZip = zips[""+ curZip +""]["zip"];
 		  curDist = zips[""+ curZip +""]["distance"];
@@ -254,6 +253,34 @@ $("#zipInput").focusout(function(){
 		  $("#zipInput").addClass("zipCodeError");
 	  }
 						});
+	
+$('#zipInput').keypress(function (e) {
+  if (e.which == 13) {
+	  
+   	  curZip = $("#zipInput").val();
+	  
+		if(zips[""+ curZip +""]){
+		  
+		  curZip = zips[""+ curZip +""]["zip"];
+		  curDist = zips[""+ curZip +""]["distance"];
+		  curDistPrice = distPrice(curDist, distFee, false);
+		  alert("found zip: "+ curZip+" distance:"+ curDist);
+		  
+		  $("#distFee").empty().append("$"+ curDistPrice +".00").removeClass("distFeeSpecial");
+		  $("#zipInput").removeClass("zipCodeError");
+		  
+	  } else {
+		  
+		  curDistPrice = distFee[4];
+		  alert("Zip not found or out of bounds: "+ curZip +", "+ curDistPrice);
+		  $("#distFee").empty().append(""+ curDistPrice +"").addClass("distFeeSpecial");
+		  $("#zipInput").addClass("zipCodeError");
+	  }
+	  
+  }
+	
+	
+});
 	
 });// JavaScript Document
 
