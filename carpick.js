@@ -240,7 +240,7 @@ $("#zipInput").focusout(function(){
 		  curZip = zips[""+ curZip +""]["zip"];
 		  curDist = zips[""+ curZip +""]["distance"];
 		  curDistPrice = distPrice(curDist, distFee, false);
-		  alert("found zip: "+ curZip+" distance:"+ curDist);
+		  //alert("found zip: "+ curZip+" distance:"+ curDist);
 		  
 		  $("#distFee").empty().append("$"+ curDistPrice +".00").removeClass("distFeeSpecial");
 		  $("#zipInput").removeClass("zipCodeError");
@@ -248,7 +248,7 @@ $("#zipInput").focusout(function(){
 	  } else {
 		  
 		  curDistPrice = distFee[4];
-		  alert("Zip not found or out of bounds: "+ curZip +", "+ curDistPrice);
+		  //alert("Zip not found or out of bounds: "+ curZip +", "+ curDistPrice);
 		  $("#distFee").empty().append(""+ curDistPrice +"").addClass("distFeeSpecial");
 		  $("#zipInput").addClass("zipCodeError");
 	  }
@@ -264,17 +264,19 @@ $('#zipInput').keypress(function (e) {
 		  curZip = zips[""+ curZip +""]["zip"];
 		  curDist = zips[""+ curZip +""]["distance"];
 		  curDistPrice = distPrice(curDist, distFee, false);
-		  alert("found zip: "+ curZip+" distance:"+ curDist);
+		  //alert("found zip: "+ curZip+" distance:"+ curDist);
 		  
 		  $("#distFee").empty().append("$"+ curDistPrice +".00").removeClass("distFeeSpecial");
 		  $("#zipInput").removeClass("zipCodeError");
+			return false;
 		  
 	  } else {
 		  
 		  curDistPrice = distFee[4];
-		  alert("Zip not found or out of bounds: "+ curZip +", "+ curDistPrice);
+		  //alert("Zip not found or out of bounds: "+ curZip +", "+ curDistPrice);
 		  $("#distFee").empty().append(""+ curDistPrice +"").addClass("distFeeSpecial");
 		  $("#zipInput").addClass("zipCodeError");
+		  return false;
 	  }
 	  
   }
